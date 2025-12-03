@@ -1,0 +1,7 @@
+fastmcp==0.4.0
+gradio==4.44.0
+google-generativeai==0.8.3
+python-dotenv==1.0.0
+sqlite3==0.4.7
+pathlib==1.0.1
+asyncio==3.4.3

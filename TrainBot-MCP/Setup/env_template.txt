@@ -1,0 +1,11 @@
+# TrainBot Voice Assistant - API Keys
+# Replace the values below with your actual API keys
+
+GEMINI_API_KEY=your_gemini_key_here
+ELEVENLABS_API_KEY=your_elevenlabs_key_here
+OPENAI_API_KEY=your_openai_key_here
+
+# How to get these keys:
+# 1. Gemini: https://aistudio.google.com/app/apikey
+# 2. ElevenLabs: https://elevenlabs.io/ -> Profile -> API Keys
+# 3. OpenAI: https://platform.openai.com/api-keys
