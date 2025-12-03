@@ -1,0 +1,2 @@
+# Core dependencies for TrainBot MCP Server
+fastmcp>=0.1.0
