@@ -1,223 +1,213 @@
-# 🎓 StudyBuddy - AI-Powered Study Companion
+# StudyBuddy MCP — AI Educational Assistant for Indian Students
 
-> Your intelligent study companion for CBSE/ICSE/IGCSE students (Grades 5-10)
+[![MCP Server](https://img.shields.io/badge/MCP-Server-blue)](https://modelcontextprotocol.io)
+[![Status](https://img.shields.io/badge/Status-In%20Development-orange)]()
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 
-Built for the **MCP 1st Birthday Hackathon** with ❤️
+**An MCP server providing educational assistance for Indian students (ages 10-16) following CBSE, ICSE, and IGCSE curricula.**
 
-![Powered by Google Gemini](https://img.shields.io/badge/Powered%20by-Google%20Gemini-4285F4?style=for-the-badge)
-![Built with MCP](https://img.shields.io/badge/Built%20with-MCP-000000?style=for-the-badge)
-![Gradio](https://img.shields.io/badge/UI-Gradio-FF6F00?style=for-the-badge)
+---
 
-## ✨ Features
+## 📚 Overview
 
-### 🔧 MCP Server Tools
+StudyBuddy is a specialized MCP server designed to assist Indian K-12 students with their studies. It provides curriculum-aligned content, study planning, and educational resources tailored to the Indian education system.
 
-1. **📚 Explain Topic** - Get grade-appropriate explanations aligned with your curriculum
-2. **✏️ Generate Practice** - Create custom practice problems with varying difficulty
-3. **🔍 Solve Step-by-Step** - Detailed solutions for math/science problems
-4. **📖 Create Story** - Transform boring topics into engaging stories
-5. **🎯 Quiz Me** - 10-question quizzes with intelligent question tracking (no repeats!)
+**Target Audience:**
+- Indian students aged 10-16
+- Following CBSE, ICSE, or IGCSE curricula
+- Parents seeking study support for their children
+- Teachers looking for supplementary resources
 
-### 💎 Key Capabilities
+---
 
-- ✅ **Curriculum Aligned**: CBSE, ICSE, and IGCSE standards
-- ✅ **Grade Adaptive**: Content tailored for grades 5-10
-- ✅ **Smart Memory**: Tracks learning history and avoids duplicate quiz questions
-- ✅ **Dual Interface**: Both MCP tools (for Claude Desktop) and Gradio web UI
-- ✅ **Structured Output**: All responses in clean JSON format
+## ✨ Features (Planned)
 
-## 🚀 Quick Start
+### Core Capabilities
 
-### Prerequisites
+- 📖 Curriculum-aligned explanations (CBSE/ICSE/IGCSE)
+- 📝 Subject-specific assistance (Math, Science, Social Studies, Languages)
+- 🎯 Grade-appropriate content (Classes 5-10)
+- 📅 Study planning and schedule recommendations
+- 🔍 Concept clarification with Indian context
+- 📚 Resource recommendations (textbooks, reference materials)
 
-- Python 3.10+
-- Google Gemini API key ([Get one here](https://makersuite.google.com/app/apikey))
-- Claude Desktop (optional, for MCP integration)
+### External Integrations
 
-### Installation
+- Wikipedia for background knowledge
+- Khan Academy for video tutorials
+- YouTube Educational content (curated)
+- NCERT/ICSE/IGCSE official resources
 
-```bash
-# Clone the repository
-git clone <your-repo-url>
-cd studybuddy-mcp
+### Advanced Features (Future)
 
-# Run setup script
-chmod +x setup.sh
-./setup.sh
+- RAG (Retrieval-Augmented Generation) for curriculum content
+- Exam preparation assistance
+- Practice problem generation
+- Progress tracking
 
-# Edit .env and add your API key
-nano .env  # or use your preferred editor
-```
-
-### Configuration
-
-1. **Add your Gemini API key** to `.env`:
-```env
-GEMINI_API_KEY=your_actual_api_key_here
-```
-
-2. **For Claude Desktop integration** (optional):
-```bash
-# Copy the MCP config to Claude Desktop
-# On Mac:
-cp claude_desktop_config.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
-
-# Don't forget to update the GEMINI_API_KEY in the config!
-```
-
-### Running the App
-
-```bash
-# Activate virtual environment
-source .venv/bin/activate
-
-# Launch Gradio interface
-python gradio_app/app.py
-```
-
-Open http://localhost:7860 in your browser 🎉
-
-## 📖 Usage
-
-### Via Gradio Interface
-
-1. **Set up your profile**: Enter name, select grade (5-10) and board (CBSE/ICSE/IGCSE)
-2. **Choose a tool** from the tabs:
-   - Explain Topic
-   - Practice Problems
-   - Solve Problem
-   - Story Mode
-   - Quiz Me
-3. **View your progress** in the "My Progress" tab
-
-### Via Claude Desktop (MCP)
-
-Once configured, you can ask Claude:
-
-```
-"Explain photosynthesis for a grade 8 CBSE student"
-"Generate 5 practice problems on quadratic equations for grade 10"
-"Create a fun story about the water cycle"
-"Quiz me on cell division (grade 9 ICSE)"
-```
+---
 
 ## 🏗️ Architecture
 
 ```
-studybuddy-mcp/
-├── mcp_server/
-│   ├── server.py         # MCP server with 5 tools
-│   ├── database.py       # SQLite for history tracking
-│   ├── prompts.py        # Structured prompts for Gemini
-│   └── gemini_client.py  # Google Gemini API integration
-├── gradio_app/
-│   └── app.py           # Enterprise-grade Gradio UI
-├── data/
-│   └── studybuddy.db    # Student progress database
-└── README.md
+StudyBuddy MCP Server
+├── MCP Protocol (STDIO)
+├── Core Tools
+│   ├── explain_concept(topic, grade, subject, curriculum)
+│   ├── generate_practice_questions(topic, difficulty, count)
+│   ├── suggest_study_plan(subjects, exam_date, current_level)
+│   └── recommend_resources(topic, grade, curriculum)
+├── External Context
+│   ├── Wikipedia search
+│   ├── Khan Academy search
+│   └── YouTube educational content
+└── AI Provider (Gemini 2.0 Flash)
 ```
-
-### Tech Stack
-
-- **MCP Server**: Python FastMCP framework
-- **LLM**: Google Gemini 1.5 Flash (fast, cost-effective)
-- **Database**: SQLite with async support (aiosqlite)
-- **Frontend**: Gradio 5 with custom enterprise CSS
-- **Deployment**: Modal (coming soon)
-
-## 🎯 Sponsor Integration
-
-### Google Gemini ✅
-- All content generation powered by Gemini 1.5 Flash
-- Structured JSON outputs for reliable parsing
-- Cost-effective for educational use cases
-
-### Modal ⏳
-- Deployment configuration coming soon
-- Serverless scaling for student workloads
-
-### ElevenLabs 🔜
-- Audio explanations (if time permits)
-- Text-to-speech for accessibility
-
-## 📊 Database Schema
-
-```sql
-students          # Student profiles
-├── id, name, grade, board, created_at
-
-explained_topics  # Topic explanations history
-├── id, student_id, subject, topic, explanation, timestamp
-
-practice_problems # Generated practice sets
-├── id, student_id, subject, topic, problems (JSON), timestamp
-
-quiz_history     # Quiz attempts with scores
-├── id, student_id, subject, topic, questions (JSON), score, timestamp
-```
-
-## 🛠️ Development
-
-### Running Tests
-
-```bash
-# Test MCP server with MCP Inspector
-npx @modelcontextprotocol/inspector python -m mcp_server.server
-
-# Test database operations
-python -c "
-import asyncio
-from mcp_server import database
-asyncio.run(database.init_database())
-print('✅ Database test passed')
-"
-```
-
-### Adding New Tools
-
-1. Add prompt template in `mcp_server/prompts.py`
-2. Register tool in `mcp_server/server.py`
-3. Add handler function
-4. Update Gradio UI in `gradio_app/app.py`
-
-## 🎓 Educational Impact
-
-StudyBuddy addresses key challenges in Indian education:
-
-- **Personalization**: Adapts to student's grade and board
-- **Accessibility**: Free AI tutoring for all students
-- **Engagement**: Stories make learning fun
-- **Practice**: Unlimited custom problems
-- **Progress Tracking**: Students see their growth
-
-## 🏆 Hackathon Submission
-
-**Track**: Building MCP (Track 1)
-**Category**: Productivity Tools
-**Special Awards**: Google Gemini, Modal Innovation
-
-**Demo Video**: [Link coming soon]
-**Social Post**: [Link coming soon]
-
-## 📝 License
-
-MIT License - see LICENSE file for details
-
-## 🙏 Acknowledgments
-
-- **Anthropic** for Claude and MCP protocol
-- **Google** for Gemini API
-- **Gradio** for the amazing UI framework
-- **Modal** for deployment platform
-
-## 🔗 Links
-
-- [MCP Documentation](https://modelcontextprotocol.io/)
-- [Google Gemini API](https://ai.google.dev/)
-- [Gradio Docs](https://www.gradio.app/)
 
 ---
 
-**Made with ❤️ for students by students**
+## 🚀 Installation (Coming Soon)
 
-*Have feedback? Open an issue or reach out!*
+### Prerequisites
+
+- Python 3.9+
+- Claude Desktop
+- Google Gemini API key
+
+### Setup
+
+```bash
+# Clone repository
+git clone https://github.com/rishi-madhav/mcp-servers.git
+cd mcp-servers/StudyBuddy-MCP
+
+# Create virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Configure API keys
+cp .env.example .env
+# Edit .env with your GEMINI_API_KEY
+```
+
+### Claude Desktop Configuration
+
+```json
+{
+  "mcpServers": {
+    "studybuddy": {
+      "command": "/path/to/StudyBuddy-MCP/venv/bin/python",
+      "args": ["/path/to/StudyBuddy-MCP/studybuddy_server.py"]
+    }
+  }
+}
+```
+
+---
+
+## 🎯 Use Cases
+
+### For Students
+
+- Get explanations of difficult concepts in simple language
+- Practice problems aligned with your curriculum
+- Study schedule based on upcoming exams
+- Find quality educational resources
+
+### For Parents
+
+- Help children with homework
+- Find appropriate study materials
+- Track learning progress
+- Understand curriculum requirements
+
+### For Teachers
+
+- Supplement classroom teaching
+- Find additional resources for students
+- Generate practice questions
+- Provide personalized assistance to struggling students
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** FastMCP 2.13.2
+- **AI Provider:** Google Gemini 2.0 Flash
+- **Python:** 3.9+
+- **External APIs:** Wikipedia, Khan Academy, YouTube
+
+---
+
+## 📋 Development Status
+
+**Current Phase:** 🚧 Active Development
+
+**Completed:**
+- ✅ Project planning and architecture
+- ✅ Curriculum research (CBSE/ICSE/IGCSE)
+
+**In Progress:**
+- 🚧 Core MCP server implementation
+- 🚧 External context integrations
+- 🚧 RAG system for curriculum content
+
+**Upcoming:**
+- 📋 Testing with real students
+- 📋 Additional features based on feedback
+- 📋 Web interface (Gradio app)
+
+---
+
+## 🤝 Contributing
+
+This project is actively seeking contributors, especially:
+- Educators familiar with Indian curricula
+- Students who can provide feedback
+- Developers interested in EdTech
+
+**How to Help:**
+
+1. Test the server with real student queries
+2. Provide feedback on content accuracy
+3. Suggest new features
+4. Report bugs or issues
+
+---
+
+## 📄 License
+
+MIT License - see [LICENSE](../LICENSE) for details
+
+---
+
+## 🙏 Acknowledgments
+
+- Indian education boards (CBSE, ICSE, CISCE) for curriculum standards
+- Khan Academy for educational content
+- Wikipedia for knowledge resources
+- Students and educators who provided input
+
+---
+
+## 👤 Author
+
+**Rishi Madhav**
+
+- Location: Bengaluru, India
+- GitHub: [@rishi-madhav](https://github.com/rishi-madhav)
+
+---
+
+## 📞 Support
+
+For questions or feedback:
+- Open an issue: [GitHub Issues](https://github.com/rishi-madhav/mcp-servers/issues)
+- Tag: `studybuddy-mcp`
+
+---
+
+**Status:** Coming Soon | Expected Launch: Q1 2025
