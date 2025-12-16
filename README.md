@@ -1,5 +1,4 @@
 # MCP Servers Collection
-
 A curated collection of Model Context Protocol (MCP) servers and applications spanning multiple domains and industries.
 
 [![MCP Protocol](https://img.shields.io/badge/MCP-Model%20Context%20Protocol-blue)](https://modelcontextprotocol.io)
